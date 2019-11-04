@@ -40,7 +40,7 @@ module.exports = {
         1000: '#1d195d',
       }
     },
-    spacingNegative: {
+    spacingNegative: { // only for negative marging
       '-0': '-0',
       '-1': '-1px',
       '-2': '-2px',
@@ -642,8 +642,8 @@ module.exports = {
     screens: {
       sm: '768px',
       md: '1024px',
-      lg: '1200px',
-      xl: '1324px',
+      lg: '1280px',
+      xl: '1400px',
     },
     fontFamily: {
       sans: [
@@ -906,11 +906,11 @@ module.exports = {
       none: 'none',
       auto: 'auto',
       xs: '20rem',
-      sm: '24rem',
-      md: '28rem',
       xmd: '28.94rem',
-      lg: '32rem',
-      xl: '36rem',
+      sm: theme('screens.sm'),
+      md: theme('screens.md'),
+      lg: theme('screens.lg'),
+      xl: theme('screens.xl'),
       ...theme('spacing'),
       ...theme('spacingPercent'),
       ...theme('spacingGrid'),
