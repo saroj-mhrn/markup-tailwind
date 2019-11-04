@@ -806,9 +806,7 @@ module.exports = {
       normal: 1.583,
       relaxed: 1.625,
       body: 1.875,
-      loose: 2,
-      Onepointsixseven: 1.67,
-      onepointfoursix: 1.46,
+      loose: 2
     },
     letterSpacing: {
       tighter: '-2px',
@@ -818,8 +816,7 @@ module.exports = {
       looser: '0.79px',
       wide: '1px',
       wider: '2',
-      widest: '3',
-      '3': '0.19rem',
+      widest: '3'
     },
     textColor: theme => theme('colors'),
     backgroundColor: theme => theme('colors'),
