@@ -18,26 +18,12 @@ module.exports = {
         200: '#dcdbe7',
         300: '#d5d5ea',
         400: '#f8f8fa',
-        500: '#e0dff8',
-        600: '#f9f8fd',
-        700: '#b6c3d8',
-        800: '#e0dff8',
-        900: '#717c8f',
-        1000: '#cacedd',
-        1100:'#cdd0d7',
-        1200:'#d5d8ed'
       },
       blue: {
         100: '#2d99e8',
         200: '#132645',
         300: '#1e1a5d',
         400: '#345995',
-        500: '#05014b',
-        600: '#1471b5',
-        700: '#394963',
-        800: '#434166',
-        900: '#e7f3fc',
-        1000: '#1d195d',
       }
     },
     spacingNegative: { // only for negative marging
@@ -987,51 +973,7 @@ module.exports = {
       current: 'currentColor',
     },
     fill: theme => ({
-      transparent: 'transparent',
-      white: '#fff',
-      black: '#000',
-      black: {
-        100: '#212121',
-        200: '#20273d',
-        300: '#06070b',
-        400: '#404040',
-      },
-      gray: {
-        100: '#fbfdff',
-        200: '#dcdbe7',
-        300: '#d5d5ea',
-        400: '#f8f8fa',
-        500: '#e0dff8',
-        600: '#f9f8fd',
-      },
-      blue: {
-        100: '#2d99e8',
-        200: '#132645',
-        300: '#1e1a5d',
-        400: '#345995',
-        500: '#05014b',
-        600: '#1471b5',
-        700: '#394963',
-        800: '#434166',
-        900: '#e7f3fc',
-      },
-      orange: {
-        100: '#fc825f',
-        200: '#fb4714',
-      },
-      green: {
-        100: '#2eb67e',
-      },
-      yellow: {
-        100: '#fbbf2d',
-        200: '#ffac00',
-      },
-      red: {
-        100: '#fd4f4f',
-      },
-      purple: {
-        100: '#747fff',
-      },
+      ...theme('colors'),
     }),
     stroke: {
       current: 'currentColor',
@@ -1056,14 +998,11 @@ module.exports = {
       disc: 'disc',
       decimal: 'decimal',
     },
-    inset: {
-      '0': 0,
+    inset: theme => ({
       auto: 'auto',
-      '1/2': '50%',
-      '4': '4px',
-      '24': '24px',
-      '34': '34px',
-    },
+      ...theme('spacing'),
+      ...theme('spacingPercent'),
+    }),
     container: {
       center: true,
       padding: '21px',
