@@ -4,3 +4,4 @@ assets/compiled
 .thumbs
 .idea
 .env
+mix-manifest.json

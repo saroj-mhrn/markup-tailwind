@@ -1,29 +1,29 @@
-let mix = require('laravel-mix');
-let tailwind = require('tailwindcss');
-require('laravel-mix-purgecss');
+const mix = require('laravel-mix');
 
-mix.disableSuccessNotifications();
-mix.setPublicPath('assets/compiled/');
-
-mix.options({
-    processCssUrls: false,
-    postCss: [
-        require('postcss-import'),
-        tailwind(),
+const NodePolyfillPlugin = require("node-polyfill-webpack-plugin")
+/*
+ |--------------------------------------------------------------------------
+ | Mix Asset Management
+ |--------------------------------------------------------------------------
+ |
+ | Mix provides a clean, fluent API for defining some Webpack build steps
+ | for your Laravel applications. By default, we are compiling the CSS
+ | file for the application as well as bundling up all the JS files.
+ |
+ */
+mix.webpackConfig({
+    plugins: [
+        new NodePolyfillPlugin()
     ]
-    })
-    // .sass('assets/sass/app.scss', 'css/app.css')
-    .postCss('assets/css/app.css', 'css/app.css')
-    .js('assets/js/app.js', 'js/app.js')
-    .purgeCss({
-        globs: [
-            // path.join(__dirname, 'node_modules/pikaday/**/*.js'),
-        ],
-        whitelistPatterns: [
-            // /status-./
-        ],
-        whitelist: [
-            // 'icon-status'
-        ]
-    })
-    .version();
+});
+
+mix.js('assets/js/app.js', 'assets/compiled/js')
+    .postCss('assets/css/app.css', 'assets/compiled/css', [
+        require('postcss-import'),
+        require('tailwindcss'),
+    ]);
+
+
+if (mix.inProduction()) {
+    mix.version();
+}
