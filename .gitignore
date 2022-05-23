@@ -5,3 +5,4 @@ assets/compiled
 .idea
 .env
 mix-manifest.json
+dist

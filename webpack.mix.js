@@ -1,27 +1,28 @@
+const { browserSync } = require('laravel-mix');
 const mix = require('laravel-mix');
+require('mix-html-builder');
+require('browser-sync');
 
-const NodePolyfillPlugin = require("node-polyfill-webpack-plugin")
-/*
- |--------------------------------------------------------------------------
- | Mix Asset Management
- |--------------------------------------------------------------------------
- |
- | Mix provides a clean, fluent API for defining some Webpack build steps
- | for your Laravel applications. By default, we are compiling the CSS
- | file for the application as well as bundling up all the JS files.
- |
- */
-mix.webpackConfig({
-    plugins: [
-        new NodePolyfillPlugin()
-    ]
-});
-
-mix.js('assets/js/app.js', 'assets/compiled/js')
-    .postCss('assets/css/app.css', 'assets/compiled/css', [
-        require('postcss-import'),
-        require('tailwindcss'),
-    ]);
+mix.setPublicPath('dist')
+    .js('src/assets/js/app.js', 'js/')
+    .postCss('src/assets/css/app.css', 'css/', [require('tailwindcss')])
+    .html({
+        htmlRoot: './src/*.html',
+        output: './',
+        minify: {
+            removeComments: true
+        },
+        // versioning: true
+    })
+    .sourceMaps(false, 'source-map')
+    .browserSync({
+        files: ['src/assets/css/app.js', 'src/assets/js/*.js', 'src/**/*.html'],
+        server: {
+            baseDir: 'dist',
+            index: 'index.html'
+        }
+    })
+    .version();
 
 
 if (mix.inProduction()) {
