@@ -19,7 +19,7 @@ mix.setPublicPath('dist')
     })
     .sourceMaps(false, 'source-map')
     .browserSync({
-        files: ['src/assets/css/app.js', 'src/assets/js/*.js', 'src/**/*.html'],
+        files: ['**/*.js', '**/*.css', 'src/**/*.html'],
         server: {
             baseDir: 'dist',
             index: 'index.html'
