@@ -5,7 +5,10 @@ require('browser-sync');
 
 mix.setPublicPath('dist')
     .js('src/assets/js/app.js', 'js/')
-    .postCss('src/assets/css/app.css', 'css/', [require('tailwindcss')])
+    .postCss('src/assets/css/app.css', 'css/', [
+        require('postcss-import'),
+        require('tailwindcss')
+    ])
     .html({
         htmlRoot: './src/*.html',
         output: './',
