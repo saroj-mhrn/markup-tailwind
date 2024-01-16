@@ -7,13 +7,6 @@ module.exports = {
   ],
   
   theme: {
-    screens: {
-      xs: '375px',
-      sm: '768px',
-      md: '1024px',
-      lg: '1280px',
-      xl: '1440px',
-    },
     fontFamily: {
       sans: ['nunito-sans', ...defaultTheme.fontFamily.sans],
       mono: ['Roboto Mono', 'SFMono-Regular'],
@@ -28,22 +21,4 @@ module.exports = {
       }
     },
   },
-  variantOrder: [
-    'first',
-    'last',
-    'odd',
-    'even',
-    'visited',
-    'checked',
-    'empty',
-    'read-only',
-    'group-hover',
-    'group-focus',
-    'focus-within',
-    'hover',
-    'focus',
-    'focus-visible',
-    'active',
-    'disabled',
-  ],
 };
