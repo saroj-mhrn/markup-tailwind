@@ -1,5 +1,17 @@
 @import "tailwindcss/base";
 
+@import "./vendors/icomoon.css";
+
 @import "tailwindcss/components";
 
 @import "tailwindcss/utilities";
+
+@layer base {
+  body {
+    @apply text-p-sm;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+
