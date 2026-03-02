@@ -7,4 +7,6 @@ Install
 
 
 watch:
-`npm run watch`
+`npm run dev`
+
+`npm run serve`

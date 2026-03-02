@@ -1,5 +1,33 @@
-@import "tailwindcss/base";
+@import "tailwindcss";
 
-@import "tailwindcss/components";
+/* @import "./vendors/icomoon.css";
+@import "./vendors/fonts.css"; */
+@import "swiper/swiper-bundle.css" layer(base);
 
-@import "tailwindcss/utilities";
+@theme {
+  --font-primary: "orpheus-pro";
+  --font-secondary: "domaine-sans-text";
+  --font-tertiary: "domaine-text", ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-icomoon: "icomoon";
+
+  --text-h1: clamp(2rem, 1.7579rem + 0.9634vw, 2.625rem);
+  --leading-h1: 1.095;
+
+  --color-sapphire: #092344;
+
+  --breakpoint-1xl: 1440px;
+
+  --background-image-pattern-01: url("/src/assets/images/pattern-09.svg");
+}
+
+@layer base {
+  .hide-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}

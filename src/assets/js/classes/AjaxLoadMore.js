@@ -1,20 +1,37 @@
 export default class AjaxLoadMore {
     constructor() {
-        jQuery('.btn-load-more-ajax a').on('click', (event) => {
-            event.preventDefault();
-            this.loadMore( jQuery(event.currentTarget) );
+        document.querySelectorAll('.btn-load-more-ajax a').forEach((link) => {
+            link.addEventListener('click', (event) => {
+                event.preventDefault();
+                this.loadMore(event.currentTarget);
+            });
         });
     }
 
     loadMore(btn) {
-        let contentTarget = btn.parent().data('target'),
-            appendTo = btn.parent().data('append-to'),
-            loadMore = btn.parent().data('load-more');
+        const parent = btn.parentElement;
+        const contentTarget = parent.dataset.target;
+        const appendTo = parent.dataset.appendTo;
+        const loadMore = parent.dataset.loadMore;
 
-        jQuery.get(btn.attr('href'), (data) => {
-            jQuery( appendTo ).append(jQuery(data).find( contentTarget ));
-            let nextBtn = jQuery(data).find( loadMore ).attr('href');
-            nextBtn ? btn.attr('href',nextBtn) : btn.parent().hide();
-        });
+        fetch(btn.getAttribute('href'))
+            .then((response) => response.text())
+            .then((html) => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+
+                const content = doc.querySelector(contentTarget);
+                if (content) {
+                    document.querySelector(appendTo).insertAdjacentHTML('beforeend', content.innerHTML);
+                }
+
+                const nextBtnEl = doc.querySelector(loadMore);
+                const nextBtn = nextBtnEl ? nextBtnEl.getAttribute('href') : null;
+                if (nextBtn) {
+                    btn.setAttribute('href', nextBtn);
+                } else {
+                    parent.style.display = 'none';
+                }
+            });
     }
 }

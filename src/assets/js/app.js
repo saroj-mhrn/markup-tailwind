@@ -1,8 +1,6 @@
-import './global.js'
-
 import * as Helper from './classes/Helpers'
 
-$(document).ready(function($){
+document.addEventListener('DOMContentLoaded', () => {
     Helper.MobileNav();
     Helper.OpenClose();
     Helper.Tabs();
